@@ -3,6 +3,33 @@
 #include <iostream>
 
 using namespace std;
+void limparBuffer();
+
+void testarCompressaoHuffman(){
+    cout << "Digite um string para compressao" <<endl;
+    string texto;
+    limparBuffer();//pq leu o inteiro do switch case
+    getline(cin, texto);
+    if(texto.empty()){
+        cout<<"Nenhum texto informado" <<endl;
+        return;
+    }
+
+    string comprimido = HuffmanCompressor::comprimir(texto);
+    cout<<"RESULTADO DA COMPRESSAO:"<<endl;
+    cout<<"Tamanho original: "<<texto.size()<<"bytes"<<endl;
+    cout<<"Tamanho comprimido> "<<comprimido.size()<<"bytes"<<endl;
+    if(texto.size()<comprimido.size()){
+        cout<<endl<<"o texto comprimido ficou maior que o original por conta de a string ser pequena, normal para huffman"<<endl;
+
+    }
+
+    cout<<endl<<"MOSTRANDO A INTEGRIDADE APOS A DESCOMPRESSAO:"<<endl;
+    string descomprimido = HuffmanCompressor::decompress(comprimido);
+    cout <<"\nTexto descomprimido:\n"<<descomprimido<<endl;
+
+    return;
+}
 
 void verQuartosOcupados(Hospicio &hosp){
     const auto& ocupacao = hosp.getOcupacao();
@@ -38,6 +65,7 @@ void mostrarMenu(){
     cout << "8. Estatisticas" << endl;
     cout << "9. Escrever ou Ler Relatorio de um Paciente" <<endl;
     cout << "10. Buscar Padrao com Rabin Karp" <<endl;
+    cout << "11. (Modulo teste) comprimir e descomprimir strings com huffman" <<endl;
     cout << "0. Sair" << endl;
     cout << "Escolha uma opcao: ";
 }
@@ -359,7 +387,7 @@ int main(){
             case 8: mostrarEstatisticas(hospicio); break;
             case 9: DepoimentosRelatorio(hospicio); break;
             case 10: BuscarRabinMenu(hospicio); break;
-
+            case 11: testarCompressaoHuffman(); break;
             case 0:
             cout << "Salvando dados..." << endl;
                 hospicio.salvarDadosTXT();
@@ -377,6 +405,7 @@ int main(){
     
     return 0;
 }
+
 
 
 
