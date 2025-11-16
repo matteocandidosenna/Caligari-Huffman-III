@@ -62,6 +62,13 @@ COMO CADA ALGORITMO FOI IMPLEMENTADO E INTEGRADO:
   Busca sequencial: O(n);
   Rabin Karp: O(n*m), onde n é o comprimento do texto e m é o comprimento do padrão;
   Compressão de Huffman: O(n log n) onde n é o número de caracteres contidos no texto a ser comprimido.
+
+
+  Extra:
+  codigo para executar o programa no terminal: 
+  
+    g++ .\caligari.cpp .\huffman.cpp .\main.cpp -o hospicio
+    .\hospicio.exe
   
       
   
